@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "action-upload-diawi",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "📦 GitHub Action for uploading APK to Diawi",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js",
@@ -9,21 +9,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/rnkdsh/action-upload-diawi.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
-    "JavaScript"
+    "JavaScript",
+    "Diawi",
+    "APK"
   ],
-  "author": "GitHub",
+  "author": "Ronak Doshi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/rnkdsh/action-upload-diawi/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/rnkdsh/action-upload-diawi#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "fs": "0.0.1-security",
+    "npm": "^6.12.1",
+    "path": "0.12.7",
+    "request": "2.88.0"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
