@@ -1,7 +1,3 @@
-<p align="center">
-  <a href="https://github.com/rnkdsh/action-upload-diawi"><img alt="Action Status" src="https://github.com/rnkdsh/action-upload-diawi/workflows/test-local/badge.svg"></a>
-</p>
-
 <div align="center">
   📦
 </div>
