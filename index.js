@@ -3,7 +3,7 @@ const Diawi = require('./diawi.js');
 
 async function run() {
   try {
-    const opts = {
+    /* const opts = {
       token: core.getInput('token'),
       path: core.getInput('file'),
       password: core.getInput('password'),
@@ -12,6 +12,16 @@ async function run() {
       installation_notifications: core.getInput('installation_notifications') === true ? 1 : 0,
       find_by_udid: core.getInput('find_by_udid') === true ? 1 : 0,
       comment: core.getInput('comment'),
+    }; */
+    const opts = {
+      token: 'myqe5Vs3JV75zckzNbM8zN4bH420farTKx4J7HBmCq',
+      path: './example.apk',
+      password: '',
+      callback_emails: '',
+      wall_of_apps: 0,
+      installation_notifications: 0,
+      find_by_udid: 0,
+      comment: '',
     };
     console.log(`Parameters: ${opts}`)
 
@@ -22,8 +32,8 @@ async function run() {
     })
     .on('error', function (error) {
       console.error('Failed: ', error);
-      process.exit(1);
       core.setFailed(error.message);
+      process.exit(1);
     });
 
     if (!core.getInput('dry-run')) {

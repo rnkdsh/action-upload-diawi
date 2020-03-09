@@ -1,5 +1,6 @@
 const fs = require('fs');
-const request = require('request');
+const axios = require('axios');
+const FormData = require('form-data');
 const util = require('util');
 const EventEmitter = require('events').EventEmitter;
 
@@ -7,10 +8,10 @@ const UPLOAD_URL = 'https://upload.diawi.com/';
 const STATUS_URL = 'https://upload.diawi.com/status';
 const POLL_MAX_COUNT = 10;
 const POLL_INTERVAL = 2;
-const DEBUG = false;
+const DEBUG = true;
 
 const sleep = (seconds) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(resolve, (seconds * 1000));
   });
 };
@@ -50,27 +51,35 @@ const Diawi = function (opts) {
   }
 };
 
-Diawi.prototype.execute = function () {
-  request.post({ url: UPLOAD_URL, formData: this.formData },
-    this.onUploadComplete.bind(this));
-};
-
-Diawi.prototype.onUploadComplete = function (err, response, body) {
-  if (err) {
-    this.emit('error', new Error(err));
-    return;
-  }
-
+Diawi.prototype.execute = async function () {
   try {
-    const json = JSON.parse(body);
-    this.job = json.job;
-    if (DEBUG) {
-      console.log('Job found: ', this.job);
+    var data = new FormData();
+    for ( var key in this.formData ) {
+      data.append(key, this.formData[key]);
     }
-
-    this.poll.bind(this)();
-  } catch (err) {
-    this.emit('error', new Error(err));
+    const response = await axios.post(UPLOAD_URL, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    if (DEBUG) {
+      console.log(response);
+    }
+    try {
+      const json = JSON.parse(response);
+      this.job = json.job;
+      if (DEBUG) {
+        console.log('Job found: ', this.job);
+      }
+      this.poll.bind(this)();
+    } catch (err) {
+      emit('error', new Error(err));
+    }
+  } catch (error) {
+    if (DEBUG) {
+      console.error(error);
+    }
+    this.emit('error', new Error(error));
   }
 };
 
@@ -82,15 +91,10 @@ Diawi.prototype.poll = function (pollCount) {
 
   sleep(POLL_INTERVAL).then(function () {
     const url = STATUS_URL + '?job=' + this.job + '&token=' + this.token;
-    request.get(url, function (err, response, body) {
-      if (err) {
-        this.emit('error', new Error(err));
-        return;
-      }
-
+    return axios.get(url);
+  }).then(function () {
       try {
-        const json = JSON.parse(body);
-
+        const json = JSON.parse(response);
         switch (json.status) {
           case 2000:
             if (json.link) {
@@ -98,26 +102,25 @@ Diawi.prototype.poll = function (pollCount) {
             } else {
               this.emit('error', new Error('Failed to get link from success response'));
             }
-
             return;
-
           case 2001:
             // Nothing, this just means poll again
             break;
-
           default:
             this.emit('error', new Error('Error in status response - ' + json.message));
             return;
         }
+        this.poll(pollCount + 1);
       } catch (err) {
+        if (DEBUG) {
+          console.error(error);
+        }
         this.emit('error', new Error(err));
         return;
       }
-
-      this.poll(pollCount + 1);
-    }.bind(this));
   }.bind(this));
 };
 
 util.inherits(Diawi, EventEmitter);
+
 module.exports = Diawi;
