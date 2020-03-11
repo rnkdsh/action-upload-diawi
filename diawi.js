@@ -8,7 +8,6 @@ const UPLOAD_URL = 'https://upload.diawi.com/';
 const STATUS_URL = 'https://upload.diawi.com/status';
 const POLL_MAX_COUNT = 10;
 const POLL_INTERVAL = 2;
-const DEBUG = true;
 
 const sleep = (seconds) => {
   return new Promise((resolve) => {
@@ -16,20 +15,16 @@ const sleep = (seconds) => {
   });
 };
 
-const Diawi = function (opts) {
-  if (!opts) {
-    opts = {};
+const Diawi = function (parameters) {
+  
+  if (!parameters) {
+    parameters = {};
   }
 
-  this.token = opts.token.trim();
-  this.path = opts.path.trim();
+  this.token = parameters.token.trim();
+  this.path = parameters.path.trim();
   if (!fs.existsSync(this.path)) {
     throw (new Error('Could not find file at ' + this.path));
-  }
-
-  if (DEBUG) {
-    console.log('Starting upload of \'' +
-      this.path + '\' with token \'' + this.token.substring(0, 3) + '...\'');
   }
 
   // Create the required form fields
@@ -39,51 +34,39 @@ const Diawi = function (opts) {
   };
 
   // Append the optional parameters to the formData
-  ['password', 'comment', 'callback_emails',
-    'wall_of_apps', 'find_by_udid', 'installation_notifications']
+  ['password', 'comment', 'callback_emails', 'wall_of_apps', 'find_by_udid', 'installation_notifications']
     .forEach((key) => {
-      if (opts[key]) {
-        this.formData[key] = opts[key];
+      if (parameters[key]) {
+        this.formData[key] = parameters[key];
       }
     });
-  if (DEBUG) {
-    console.log(this.formData);
-  }
 };
 
 Diawi.prototype.execute = async function () {
   try {
-    var data = new FormData();
+
+    const data = new FormData();
     for ( var key in this.formData ) {
       data.append(key, this.formData[key]);
     }
-    const response = await axios.post(UPLOAD_URL, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-    if (DEBUG) {
-      console.log(response);
-    }
-    try {
-      const json = JSON.parse(response);
-      this.job = json.job;
-      if (DEBUG) {
-        console.log('Job found: ', this.job);
-      }
-      this.poll.bind(this)();
-    } catch (err) {
-      emit('error', new Error(err));
-    }
+    
+    const config = { 
+      headers: data.getHeaders() /* { 'Content-Type': 'multipart/form-data' } */,
+      maxContentLength: 100000000
+    };
+
+    const response = await axios.post(UPLOAD_URL, data, config);
+
+    this.job = response.data.job;
+
+    this.poll.bind(this)();
   } catch (error) {
-    if (DEBUG) {
-      console.error(error);
-    }
     this.emit('error', new Error(error));
   }
 };
 
 Diawi.prototype.poll = function (pollCount) {
+  
   if (pollCount > POLL_MAX_COUNT) {
     this.emit('error', new Error('Timed out polling for job completion'));
     return;
@@ -92,13 +75,12 @@ Diawi.prototype.poll = function (pollCount) {
   sleep(POLL_INTERVAL).then(function () {
     const url = STATUS_URL + '?job=' + this.job + '&token=' + this.token;
     return axios.get(url);
-  }).then(function () {
+  }.bind(this)).then(function (response) {
       try {
-        const json = JSON.parse(response);
-        switch (json.status) {
+        switch (response.data.status) {
           case 2000:
-            if (json.link) {
-              this.emit('complete', json.link);
+            if (response.data.link) {
+              this.emit('complete', response.data.link);
             } else {
               this.emit('error', new Error('Failed to get link from success response'));
             }
@@ -107,17 +89,17 @@ Diawi.prototype.poll = function (pollCount) {
             // Nothing, this just means poll again
             break;
           default:
-            this.emit('error', new Error('Error in status response - ' + json.message));
+            this.emit('error', new Error('Error in status response - ' + response.data.message));
             return;
         }
         this.poll(pollCount + 1);
       } catch (err) {
-        if (DEBUG) {
-          console.error(error);
-        }
         this.emit('error', new Error(err));
         return;
       }
+  }.bind(this))
+  .catch(function (error) {
+    this.emit('error', new Error(error));
   }.bind(this));
 };
 
