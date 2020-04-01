@@ -54,3 +54,8 @@ with:
   token: ${{ secrets.DIAWI_TOKEN }}
   file: ./example.apk
 ```
+
+## Troubleshooting
+
+* it's successful if a diawi url is printed in the logs sth like 'https://install.diawi.com/NisCH'
+* in case it's not succesful, maybe some parameters are used which are reserved for paid diawi-account
