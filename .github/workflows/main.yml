@@ -13,6 +13,9 @@ jobs:
         uses: actions/checkout@v1
 
       - uses: ./
+        id: diawi
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ./example.apk
+      - name: echo output
+        run: echo ${{join(steps.diawi.outputs.url.value, '\n')}}
