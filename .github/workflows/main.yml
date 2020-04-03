@@ -18,4 +18,4 @@ jobs:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ./example.apk
       - name: echo output
-        run: echo ${{join(steps.diawi.outputs.url.value, '\n')}}
+        run: echo "check here:\n ${{ steps.diawi.outputs['url'] }}"
