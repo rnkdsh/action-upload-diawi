@@ -24,5 +24,6 @@ html/*.png
 
 *.pyc
 
-
+Session.vim
 .nyc_output
+/.editorconfig

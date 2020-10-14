@@ -13,7 +13,7 @@ async function run() {
       find_by_udid: core.getInput('find_by_udid') === true ? 1 : 0,
       comment: core.getInput('comment'),
     };
-    console.log(`Parameters: ${parameters}`)
+    //console.log(`Parameters: ${parameters}`)
 
     const diawiCommand = new Diawi(parameters)
       .on('complete', function (url) {
