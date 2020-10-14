@@ -17,6 +17,11 @@ jobs:
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ./example.apk
+          password: 'test'
+          recipients: 'ronakdoshi10@gmail.com'
+          wall_of_apps: false
+          installation_notifications: 'ronakdoshi10@gmail.com'
+          comment: 'Uploaded from Github Action'
       
       - name: Output
-        run: echo "Diawi URL:\n ${{ steps.diawi.outputs['url'] }}"
+        run: echo "Diawi URL = ${{ steps.diawi.outputs['url'] }}"
