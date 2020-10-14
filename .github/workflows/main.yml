@@ -17,10 +17,6 @@ jobs:
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ./example.apk
-          password: 'test'
-          recipients: 'ronakdoshi10@gmail.com'
-          wall_of_apps: false
-          installation_notifications: 'ronakdoshi10@gmail.com'
           comment: 'Uploaded from Github Action'
       
       - name: Output
