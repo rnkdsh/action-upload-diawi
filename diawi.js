@@ -52,7 +52,8 @@ Diawi.prototype.execute = async function () {
     
     const config = { 
       headers: data.getHeaders() /* { 'Content-Type': 'multipart/form-data' } */,
-      maxContentLength: 100000000
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity
     };
 
     const response = await axios.post(UPLOAD_URL, data, config);
