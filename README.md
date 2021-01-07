@@ -49,7 +49,7 @@ The following are _required_ as `step.env` keys
 ## Example
 
 ```yaml
-uses: rnkdsh/action-upload-diawi@v1.1.2
+uses: rnkdsh/action-upload-diawi@v1.1.3
 with:
   token: ${{ secrets.DIAWI_TOKEN }}
   file: ./example.apk
