@@ -16,9 +16,11 @@ async function run() {
     //console.log(`Parameters: ${parameters}`)
 
     const diawiCommand = new Diawi(parameters)
-      .on('complete', function (url) {
-        console.log(url);
+      .on('complete', function (url, qrcode) {
+        console.log('url: ' + url);
+        console.log('qrcode: ' + qrcode);
         core.setOutput('url', url);
+        core.setOutput('qrcode', qrcode);
       })
       .on('error', function (error) {
         console.error('Failed: ', error);

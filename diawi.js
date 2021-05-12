@@ -81,7 +81,7 @@ Diawi.prototype.poll = function (pollCount) {
         switch (response.data.status) {
           case 2000:
             if (response.data.link) {
-              this.emit('complete', response.data.link);
+              this.emit('complete', response.data.link, response.data.qrcode);
             } else {
               this.emit('error', new Error('Failed to get link from success response'));
             }
