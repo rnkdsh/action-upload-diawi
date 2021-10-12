@@ -25,14 +25,13 @@
   },
   "homepage": "https://github.com/rnkdsh/action-upload-diawi#readme",
   "dependencies": {
-    "@actions/core": "^1.2.7",
-    "axios": "^0.21.1",
+    "@actions/core": "^1.6.0",
+    "axios": "^0.22.0",
     "fs": "0.0.1-security",
-    "npm": "^7.12.1",
     "path": "0.12.7"
   },
   "devDependencies": {
-    "eslint": "^7.26.0",
-    "jest": "^26.6.3"
+    "eslint": "^8.0.0",
+    "jest": "^27.2.5"
   }
 }

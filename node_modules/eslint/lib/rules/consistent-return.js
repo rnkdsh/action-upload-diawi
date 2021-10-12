@@ -8,23 +8,12 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const lodash = require("lodash");
-
 const astUtils = require("./utils/ast-utils");
+const { upperCaseFirst } = require("../shared/string-utils");
 
 //------------------------------------------------------------------------------
 // Helpers
 //------------------------------------------------------------------------------
-
-/**
- * Checks whether or not a given node is an `Identifier` node which was named a given name.
- * @param {ASTNode} node A node to check.
- * @param {string} name An expected name of the node.
- * @returns {boolean} `true` if the node is an `Identifier` node which was named as expected.
- */
-function isIdentifier(node, name) {
-    return node.type === "Identifier" && node.name === name;
-}
 
 /**
  * Checks whether or not a given code path segment is unreachable.
@@ -57,7 +46,6 @@ module.exports = {
 
         docs: {
             description: "require `return` statements to either always or never specify values",
-            category: "Best Practices",
             recommended: false,
             url: "https://eslint.org/docs/rules/consistent-return"
         },
@@ -115,18 +103,18 @@ module.exports = {
             } else if (node.type === "ArrowFunctionExpression") {
 
                 // `=>` token
-                loc = context.getSourceCode().getTokenBefore(node.body, astUtils.isArrowToken).loc.start;
+                loc = context.getSourceCode().getTokenBefore(node.body, astUtils.isArrowToken).loc;
             } else if (
                 node.parent.type === "MethodDefinition" ||
                 (node.parent.type === "Property" && node.parent.method)
             ) {
 
                 // Method name.
-                loc = node.parent.key.loc.start;
+                loc = node.parent.key.loc;
             } else {
 
                 // Function name or `function` keyword.
-                loc = (node.id || node).loc.start;
+                loc = (node.id || context.getSourceCode().getFirstToken(node)).loc;
             }
 
             if (!name) {
@@ -165,7 +153,7 @@ module.exports = {
                 let hasReturnValue = Boolean(argument);
 
                 if (treatUndefinedAsUnspecified && hasReturnValue) {
-                    hasReturnValue = !isIdentifier(argument, "undefined") && argument.operator !== "void";
+                    hasReturnValue = !astUtils.isSpecificId(argument, "undefined") && argument.operator !== "void";
                 }
 
                 if (!funcInfo.hasReturn) {
@@ -175,7 +163,7 @@ module.exports = {
                     funcInfo.data = {
                         name: funcInfo.node.type === "Program"
                             ? "Program"
-                            : lodash.upperFirst(astUtils.getFunctionNameWithKind(funcInfo.node))
+                            : upperCaseFirst(astUtils.getFunctionNameWithKind(funcInfo.node))
                     };
                 } else if (funcInfo.hasReturnValue !== hasReturnValue) {
                     context.report({
