@@ -26,12 +26,12 @@
   "homepage": "https://github.com/rnkdsh/action-upload-diawi#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "axios": "^0.22.0",
+    "axios": "^0.26.0",
     "fs": "0.0.1-security",
     "path": "0.12.7"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
-    "jest": "^27.2.5"
+    "eslint": "^8.10.0",
+    "jest": "^27.5.1"
   }
 }
