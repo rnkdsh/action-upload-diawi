@@ -122,7 +122,7 @@ async function runGlobalHook({allTests, globalConfig, moduleName}) {
               );
             }
 
-            await globalModule(globalConfig);
+            await globalModule(globalConfig, projectConfig);
           }
         );
       } catch (error) {

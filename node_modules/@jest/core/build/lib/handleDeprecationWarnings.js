@@ -40,12 +40,12 @@ function handleDeprecationWarnings(pipe, stdin = process.stdin) {
     if (typeof stdin.setRawMode === 'function') {
       const messages = [
         _chalk().default.red('There are deprecation warnings.\n'),
-        _chalk().default.dim(' \u203A Press ') +
-          'Enter' +
-          _chalk().default.dim(' to continue.'),
-        _chalk().default.dim(' \u203A Press ') +
-          'Esc' +
-          _chalk().default.dim(' to exit.')
+        `${_chalk().default.dim(' \u203A Press ')}Enter${_chalk().default.dim(
+          ' to continue.'
+        )}`,
+        `${_chalk().default.dim(' \u203A Press ')}Esc${_chalk().default.dim(
+          ' to exit.'
+        )}`
       ];
       pipe.write(messages.join('\n'));
       stdin.setRawMode(true);

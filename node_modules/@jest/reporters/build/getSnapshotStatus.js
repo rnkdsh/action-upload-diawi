@@ -52,9 +52,9 @@ function getSnapshotStatus(snapshot, afterUpdate) {
   if (snapshot.added) {
     statuses.push(
       SNAPSHOT_ADDED(
-        ARROW +
-          (0, _jestUtil().pluralize)('snapshot', snapshot.added) +
-          ' written.'
+        `${
+          ARROW + (0, _jestUtil().pluralize)('snapshot', snapshot.added)
+        } written.`
       )
     );
   }
@@ -62,9 +62,9 @@ function getSnapshotStatus(snapshot, afterUpdate) {
   if (snapshot.updated) {
     statuses.push(
       SNAPSHOT_UPDATED(
-        ARROW +
-          (0, _jestUtil().pluralize)('snapshot', snapshot.updated) +
-          ' updated.'
+        `${
+          ARROW + (0, _jestUtil().pluralize)('snapshot', snapshot.updated)
+        } updated.`
       )
     );
   }
@@ -72,9 +72,9 @@ function getSnapshotStatus(snapshot, afterUpdate) {
   if (snapshot.unmatched) {
     statuses.push(
       FAIL_COLOR(
-        ARROW +
-          (0, _jestUtil().pluralize)('snapshot', snapshot.unmatched) +
-          ' failed.'
+        `${
+          ARROW + (0, _jestUtil().pluralize)('snapshot', snapshot.unmatched)
+        } failed.`
       )
     );
   }
@@ -83,18 +83,18 @@ function getSnapshotStatus(snapshot, afterUpdate) {
     if (afterUpdate) {
       statuses.push(
         SNAPSHOT_UPDATED(
-          ARROW +
-            (0, _jestUtil().pluralize)('snapshot', snapshot.unchecked) +
-            ' removed.'
+          `${
+            ARROW + (0, _jestUtil().pluralize)('snapshot', snapshot.unchecked)
+          } removed.`
         )
       );
     } else {
       statuses.push(
-        SNAPSHOT_OUTDATED(
-          ARROW +
-            (0, _jestUtil().pluralize)('snapshot', snapshot.unchecked) +
-            ' obsolete'
-        ) + '.'
+        `${SNAPSHOT_OUTDATED(
+          `${
+            ARROW + (0, _jestUtil().pluralize)('snapshot', snapshot.unchecked)
+          } obsolete`
+        )}.`
       );
     }
 
@@ -104,7 +104,7 @@ function getSnapshotStatus(snapshot, afterUpdate) {
   }
 
   if (snapshot.fileDeleted) {
-    statuses.push(SNAPSHOT_UPDATED(ARROW + 'snapshot file removed.'));
+    statuses.push(SNAPSHOT_UPDATED(`${ARROW}snapshot file removed.`));
   }
 
   return statuses;
