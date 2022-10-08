@@ -1,7 +1,16 @@
 'use strict';
 
-var utils = require('./../utils');
+import utils from '../utils.js';
+import AxiosURLSearchParams from '../helpers/AxiosURLSearchParams.js';
 
+/**
+ * It replaces all instances of the characters `:`, `$`, `,`, `+`, `[`, and `]` with their
+ * URI encoded counterparts
+ *
+ * @param {string} val The value to be encoded.
+ *
+ * @returns {string} The encoded value.
+ */
 function encode(val) {
   return encodeURIComponent(val).
     replace(/%3A/gi, ':').
@@ -17,54 +26,31 @@ function encode(val) {
  *
  * @param {string} url The base of the url (e.g., http://www.google.com)
  * @param {object} [params] The params to be appended
+ * @param {?object} options
+ *
  * @returns {string} The formatted url
  */
-module.exports = function buildURL(url, params, paramsSerializer) {
+export default function buildURL(url, params, options) {
   /*eslint no-param-reassign:0*/
   if (!params) {
     return url;
   }
 
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
+  const hashmarkIndex = url.indexOf('#');
 
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      } else {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
+  if (hashmarkIndex !== -1) {
+    url = url.slice(0, hashmarkIndex);
   }
 
-  if (serializedParams) {
-    var hashmarkIndex = url.indexOf('#');
-    if (hashmarkIndex !== -1) {
-      url = url.slice(0, hashmarkIndex);
-    }
+  const _encode = options && options.encode || encode;
 
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  const serializerParams = utils.isURLSearchParams(params) ?
+    params.toString() :
+    new AxiosURLSearchParams(params, options).toString(_encode);
+
+  if (serializerParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializerParams;
   }
 
   return url;
-};
+}
