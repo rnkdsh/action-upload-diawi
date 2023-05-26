@@ -1,4 +1,4 @@
-name: "Main"
+name: 'Main'
 
 on:
   push:
@@ -20,6 +20,8 @@ jobs:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ./example.apk
           comment: 'Uploaded from Github Action'
-      
+
       - name: Output
-        run: echo "Diawi URL = ${{ steps.diawi.outputs['url'] }}"
+        run: |
+          echo "Diawi URL = ${{ steps.diawi.outputs['url'] }}" \
+          echo "Diawi QR Code = ${{ steps.diawi.outputs['qrcode'] }}" \
