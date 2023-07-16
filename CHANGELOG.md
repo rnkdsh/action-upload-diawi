@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.0...v1.5.1) (2023-07-16)
+
+
+### Miscellaneous Chores
+
+* release 1.5.1 ([0f12b10](https://github.com/rnkdsh/action-upload-diawi/commit/0f12b10e05405e55f78a5210df0de4f9e9787c13))
+
 ## [1.5.0](https://github.com/rnkdsh/action-upload-diawi/compare/v1.4.0...v1.5.0) (2023-05-26)
 
 
