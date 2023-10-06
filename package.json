@@ -1,6 +1,6 @@
 {
   "name": "action-upload-diawi",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "📦 GitHub Action for uploading APK to Diawi",
   "main": "lib/main.js",
   "scripts": {
