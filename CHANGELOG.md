@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.5](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.4...v1.5.5) (2024-02-15)
+
+
+### Bug Fixes
+
+* remove package-name from release-please ([0daddd0](https://github.com/rnkdsh/action-upload-diawi/commit/0daddd0da5ee1f37edc3be38f040349eb2bf5bb1))
+* update version in README ([18532df](https://github.com/rnkdsh/action-upload-diawi/commit/18532dfd182f16a3c9ebd30f96903a180e5292ae))
+
 ## [1.5.4](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.3...v1.5.4) (2023-11-20)
 
 
