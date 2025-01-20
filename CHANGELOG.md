@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.6](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.5...v1.5.6) (2025-01-20)
+
+
+### Bug Fixes
+
+* update release-please-action ([6efd368](https://github.com/rnkdsh/action-upload-diawi/commit/6efd368d4aa40cc34ebcd4dd5c458408a316d1ac))
+* update version in README ([7223f45](https://github.com/rnkdsh/action-upload-diawi/commit/7223f45877ffab6a47a73130a1305a6e10277917))
+
 ## [1.5.5](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.4...v1.5.5) (2024-02-15)
 
 
