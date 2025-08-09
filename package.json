@@ -1,6 +1,6 @@
 {
   "name": "action-upload-diawi",
-  "version": "1.5.10",
+  "version": "1.5.11",
   "description": "📦 GitHub Action for uploading APK to Diawi",
   "main": "lib/main.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "path": "0.12.7"
   },
   "devDependencies": {
-    "@types/node": "^22.17.1",
+    "@types/node": "^22.16.5",
     "@typescript-eslint/parser": "^8.38.0",
     "@vercel/ncc": "^0.38.3",
     "eslint": "^9.32.0",
