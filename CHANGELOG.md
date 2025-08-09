@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.11](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.10...v1.5.11) (2025-08-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to ^1.11.0 ([660176e](https://github.com/rnkdsh/action-upload-diawi/commit/660176e28a2e74411ddbab10028e238793813d5c))
+* **deps:** update dependency axios to ^1.11.0 ([f78222c](https://github.com/rnkdsh/action-upload-diawi/commit/f78222c7963fc5c6d1505ee11d0d76169580f865))
+
 ## [1.5.10](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.9...v1.5.10) (2025-07-12)
 
 
