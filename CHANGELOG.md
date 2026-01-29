@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.13](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.12...v1.5.13) (2026-01-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/core to ^2.0.1 ([#186](https://github.com/rnkdsh/action-upload-diawi/issues/186)) ([744ddb1](https://github.com/rnkdsh/action-upload-diawi/commit/744ddb1f917b2ff57f0c3e6f80ee543d51ec95a5))
+* **deps:** update dependency @actions/core to ^2.0.2 ([#197](https://github.com/rnkdsh/action-upload-diawi/issues/197)) ([392f141](https://github.com/rnkdsh/action-upload-diawi/commit/392f141f852dd601cba1ea193675d0160829fc8d))
+* **deps:** update dependency @actions/core to ^2.0.3 ([#208](https://github.com/rnkdsh/action-upload-diawi/issues/208)) ([e56f187](https://github.com/rnkdsh/action-upload-diawi/commit/e56f187dacf1eea3d99941405d37e5effc24e6b7))
+* **deps:** update dependency @actions/core to v2 ([86c8550](https://github.com/rnkdsh/action-upload-diawi/commit/86c85507b6f8dd61cda06793c16ef5fa74a84bb7))
+* **deps:** update dependency @actions/core to v2 ([7d36d40](https://github.com/rnkdsh/action-upload-diawi/commit/7d36d40f6640bb404142ce0e90f6ed26100e05c4))
+* **deps:** update dependency axios to ^1.13.1 ([#161](https://github.com/rnkdsh/action-upload-diawi/issues/161)) ([0574b87](https://github.com/rnkdsh/action-upload-diawi/commit/0574b870b32af93a989fadec1a3f61f44554bc76))
+* **deps:** update dependency axios to ^1.13.2 ([#167](https://github.com/rnkdsh/action-upload-diawi/issues/167)) ([98ccea5](https://github.com/rnkdsh/action-upload-diawi/commit/98ccea5279c6c043eb69b68407c6667ed0c90658))
+* **deps:** update dependency axios to ^1.13.3 ([#205](https://github.com/rnkdsh/action-upload-diawi/issues/205)) ([ac3f254](https://github.com/rnkdsh/action-upload-diawi/commit/ac3f254ada2f808eb47a9366dcdf1054125becaf))
+* **deps:** update dependency axios to ^1.13.4 ([#209](https://github.com/rnkdsh/action-upload-diawi/issues/209)) ([c129665](https://github.com/rnkdsh/action-upload-diawi/commit/c1296653b99ebb5692b2b5ab9837338f8f07ae66))
+
 ## [1.5.12](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.11...v1.5.12) (2025-10-13)
 
 
