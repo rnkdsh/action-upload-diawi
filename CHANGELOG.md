@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.5.13](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.12...v1.5.13) (2026-06-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/core to ^2.0.1 ([#186](https://github.com/rnkdsh/action-upload-diawi/issues/186)) ([744ddb1](https://github.com/rnkdsh/action-upload-diawi/commit/744ddb1f917b2ff57f0c3e6f80ee543d51ec95a5))
+* **deps:** update dependency @actions/core to ^2.0.2 ([#197](https://github.com/rnkdsh/action-upload-diawi/issues/197)) ([392f141](https://github.com/rnkdsh/action-upload-diawi/commit/392f141f852dd601cba1ea193675d0160829fc8d))
+* **deps:** update dependency @actions/core to ^2.0.3 ([#208](https://github.com/rnkdsh/action-upload-diawi/issues/208)) ([e56f187](https://github.com/rnkdsh/action-upload-diawi/commit/e56f187dacf1eea3d99941405d37e5effc24e6b7))
+* **deps:** update dependency @actions/core to ^3.0.1 ([6be988e](https://github.com/rnkdsh/action-upload-diawi/commit/6be988e09e4eb891c46a7ac23ae75f7d12a2cc34))
+* **deps:** update dependency @actions/core to ^3.0.1 ([8b60207](https://github.com/rnkdsh/action-upload-diawi/commit/8b6020788ea78fa1d63b96a855fb1da9c91e9e2d))
+* **deps:** update dependency @actions/core to v2 ([86c8550](https://github.com/rnkdsh/action-upload-diawi/commit/86c85507b6f8dd61cda06793c16ef5fa74a84bb7))
+* **deps:** update dependency @actions/core to v2 ([7d36d40](https://github.com/rnkdsh/action-upload-diawi/commit/7d36d40f6640bb404142ce0e90f6ed26100e05c4))
+* **deps:** update dependency @actions/core to v3 ([a58576e](https://github.com/rnkdsh/action-upload-diawi/commit/a58576e2309a0a87c2a769547a59853d85978c54))
+* **deps:** update dependency @actions/core to v3 ([eecf8f6](https://github.com/rnkdsh/action-upload-diawi/commit/eecf8f6a3abd23040c352f4b687e0ba79b212773))
+* **deps:** update dependency axios to ^1.13.1 ([#161](https://github.com/rnkdsh/action-upload-diawi/issues/161)) ([0574b87](https://github.com/rnkdsh/action-upload-diawi/commit/0574b870b32af93a989fadec1a3f61f44554bc76))
+* **deps:** update dependency axios to ^1.13.2 ([#167](https://github.com/rnkdsh/action-upload-diawi/issues/167)) ([98ccea5](https://github.com/rnkdsh/action-upload-diawi/commit/98ccea5279c6c043eb69b68407c6667ed0c90658))
+* **deps:** update dependency axios to ^1.13.3 ([#205](https://github.com/rnkdsh/action-upload-diawi/issues/205)) ([ac3f254](https://github.com/rnkdsh/action-upload-diawi/commit/ac3f254ada2f808eb47a9366dcdf1054125becaf))
+* **deps:** update dependency axios to ^1.13.4 ([#209](https://github.com/rnkdsh/action-upload-diawi/issues/209)) ([c129665](https://github.com/rnkdsh/action-upload-diawi/commit/c1296653b99ebb5692b2b5ab9837338f8f07ae66))
+* **deps:** update dependency axios to ^1.13.6 ([0d80984](https://github.com/rnkdsh/action-upload-diawi/commit/0d80984f65c591c08cfde72d83decc301ac57af8))
+* **deps:** update dependency axios to ^1.13.6 ([3592d5c](https://github.com/rnkdsh/action-upload-diawi/commit/3592d5c8adc88122a02b5b2d7f71af07a4069b6f))
+* **deps:** update dependency axios to ^1.17.0 ([ed5a931](https://github.com/rnkdsh/action-upload-diawi/commit/ed5a931acb0975b37e0a608fb3056d8cdc31736b))
+* **deps:** update dependency axios to ^1.17.0 ([b7a89e5](https://github.com/rnkdsh/action-upload-diawi/commit/b7a89e5dd4bd52b83551301ef7f5571d5f44611d))
+
 ## [1.5.12](https://github.com/rnkdsh/action-upload-diawi/compare/v1.5.11...v1.5.12) (2025-10-13)
 
 
