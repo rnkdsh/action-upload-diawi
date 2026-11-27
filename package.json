@@ -36,7 +36,7 @@
     "path": "0.12.7"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
+    "@types/node": "^26.6.11",
     "@typescript-eslint/parser": "^8.74.0",
     "@vercel/ncc": "^0.45.0",
     "eslint": "^10.15.0",
